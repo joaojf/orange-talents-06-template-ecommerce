@@ -1,5 +1,6 @@
 package com.zup.edu.mercadolivre.usuario;
 
+import com.zup.edu.mercadolivre.exceptions.UnicoValid;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -9,6 +10,7 @@ public class UsuarioRequest {
 
     @NotBlank
     @Email
+    @UnicoValid(entidade = Usuario.class, atributo = "login", message = "Não foi possível realizar um cadastro com este email.")
     private String login;
 
     @NotBlank @Length(min = 6)
