@@ -14,6 +14,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Entity
@@ -122,5 +123,16 @@ public class Produto {
         return criadoEm;
     }
 
+    public <T> Set<T> mapeiaCaracteristicas(Function<CaracteristicaProduto, T> funcaoMapeadora) {
+        return this.caracteristicas.stream().map(funcaoMapeadora).collect(Collectors.toSet());
+    }
+
+    public <T> Set<T> mapeiaImagens(Function<Imagem, T> funcaoMapeadora) {
+        return this.imagem.stream().map(funcaoMapeadora).collect(Collectors.toSet());
+    }
+
+    public <T extends Comparable<T>> SortedSet<T> mapeiaPerguntas(Function<Pergunta, T> funcaoMapeadora) {
+        return this.perguntaRequests.stream().map(funcaoMapeadora).collect(Collectors.toCollection(TreeSet::new));
+    }
 
 }

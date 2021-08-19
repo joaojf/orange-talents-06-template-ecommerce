@@ -29,7 +29,7 @@ public class OpiniaoController {
 
 
     @Transactional
-    @PostMapping(value = "/opiniao/produto/{id}")
+    @PostMapping(value = "/produtos/opinioes/{id}")
     public ResponseEntity<?> insert(@PathVariable Long id, @Valid @RequestBody OpiniaoRequest opiniaoRequest, Authentication authentication) {
         Usuario usuario = (Usuario) authentication.getPrincipal();
         Produto produto = entityManager.find(Produto.class, id);

@@ -1,9 +1,10 @@
-package com.zup.edu.mercadolivre.produto;
+package com.zup.edu.mercadolivre.produto.dtos;
 
 import com.zup.edu.mercadolivre.categoria.Categoria;
 import com.zup.edu.mercadolivre.categoria.CategoriaRepository;
 import com.zup.edu.mercadolivre.exceptions.ExisteValid;
 import com.zup.edu.mercadolivre.exceptions.NaoHaNomeRepetidoNaListaValid;
+import com.zup.edu.mercadolivre.produto.Produto;
 import com.zup.edu.mercadolivre.produto.caracteristica.CaracteristicaProdutoRequest;
 import com.zup.edu.mercadolivre.usuario.Usuario;
 import org.hibernate.validator.constraints.Length;

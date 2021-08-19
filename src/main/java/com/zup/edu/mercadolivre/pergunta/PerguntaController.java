@@ -35,7 +35,7 @@ public class PerguntaController {
     }
 
     @Transactional
-    @PostMapping(value = "/facaUmaPergunta/{id}")
+    @PostMapping(value = "/produtos/perguntas/{id}")
     public ResponseEntity<?> insert(@PathVariable Long id, @Valid @RequestBody PerguntaRequest perguntaRequest, Authentication authentication) {
         Usuario usuario = (Usuario) authentication.getPrincipal();
         Produto produto = produtoRepositoy.findById(id).orElseThrow(() -> new ExceptionNotFound("Id " + id + " não encontrado", HttpStatus.NOT_FOUND));
