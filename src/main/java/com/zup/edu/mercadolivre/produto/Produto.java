@@ -135,4 +135,12 @@ public class Produto {
         return this.perguntaRequests.stream().map(funcaoMapeadora).collect(Collectors.toCollection(TreeSet::new));
     }
 
+    public boolean abaterEstoque(Integer quantidade) {
+        if (this.qtDisponivel > 0) {
+            this.qtDisponivel -= quantidade;
+            return true;
+        }
+        return false;
+    }
+
 }
