@@ -28,7 +28,6 @@ public class UnicoValidator implements ConstraintValidator<UnicoValid, Object> {
 
         Query query = entityManager.createQuery(jpql);
         query.setParameter("pValor", value);
-//        boolean empty = query.getResultList().isEmpty();
         return query.getResultList().isEmpty();
     }
 
