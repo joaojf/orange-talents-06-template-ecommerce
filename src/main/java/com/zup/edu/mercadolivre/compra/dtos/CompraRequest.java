@@ -1,5 +1,7 @@
-package com.zup.edu.mercadolivre.compra;
+package com.zup.edu.mercadolivre.compra.dtos;
 
+import com.zup.edu.mercadolivre.compra.Compra;
+import com.zup.edu.mercadolivre.compra.EnumGatewayPagamento;
 import com.zup.edu.mercadolivre.exceptions.ExceptionNotFound;
 import com.zup.edu.mercadolivre.exceptions.ExisteValid;
 import com.zup.edu.mercadolivre.produto.Produto;
