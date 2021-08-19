@@ -1,6 +1,7 @@
 package com.zup.edu.mercadolivre.produto;
 
 import com.zup.edu.mercadolivre.categoria.Categoria;
+import com.zup.edu.mercadolivre.imagem.Imagem;
 import com.zup.edu.mercadolivre.produto.caracteristica.CaracteristicaProduto;
 import com.zup.edu.mercadolivre.produto.caracteristica.CaracteristicaProdutoRequest;
 import com.zup.edu.mercadolivre.usuario.Usuario;
@@ -46,9 +47,11 @@ public class Produto {
     @CreationTimestamp
     private final Instant criadoEm = Instant.now();
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "produto")
+    private final Set<Imagem> imagem = new HashSet<>();
+
     @Deprecated
-    public Produto() {
-    }
+    public Produto() {}
 
     public Produto(String nome, BigDecimal valor, Integer qtDisponivel, Collection<CaracteristicaProdutoRequest> caracteristicas, String descricao, Categoria categoria, Usuario usuario) {
         this.nome = nome;
@@ -60,6 +63,14 @@ public class Produto {
         this.usuario = usuario;
     }
 
+    public void adicionarImagens(Set<String> link) {
+        Set<Imagem> imagens = link.stream().map(url -> new Imagem(url, this)).collect(Collectors.toSet());
+        this.imagem.addAll(imagens);
+    }
+
+    public Set<Imagem> getImagem() {
+        return imagem;
+    }
     public Long getId() {
         return id;
     }
