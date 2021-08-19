@@ -4,6 +4,7 @@ import com.zup.edu.mercadolivre.categoria.Categoria;
 import com.zup.edu.mercadolivre.imagem.Imagem;
 import com.zup.edu.mercadolivre.opiniao.Opiniao;
 import com.zup.edu.mercadolivre.opiniao.Opinioes;
+import com.zup.edu.mercadolivre.pergunta.Pergunta;
 import com.zup.edu.mercadolivre.produto.caracteristica.CaracteristicaProduto;
 import com.zup.edu.mercadolivre.produto.caracteristica.CaracteristicaProdutoRequest;
 import com.zup.edu.mercadolivre.usuario.Usuario;
@@ -12,10 +13,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -54,6 +52,10 @@ public class Produto {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "produto")
     private Set<Opiniao> opinioes = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "produto")
+    @OrderBy("titulo asc")
+    private SortedSet<Pergunta> perguntaRequests = new TreeSet<>();
 
     @Deprecated
     public Produto() {}
