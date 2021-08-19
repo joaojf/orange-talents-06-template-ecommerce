@@ -3,6 +3,7 @@ package com.zup.edu.mercadolivre.imagem;
 import com.zup.edu.mercadolivre.produto.Produto;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Imagem {
@@ -39,5 +40,18 @@ public class Imagem {
 
     public String getLink() {
         return url;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Imagem imagem = (Imagem) o;
+        return id.equals(imagem.id) && url.equals(imagem.url) && produto.equals(imagem.produto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, url, produto);
     }
 }
